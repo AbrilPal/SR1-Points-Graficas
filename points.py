@@ -29,7 +29,7 @@ blanco = color(255,255,255)
 # clase principal
 class Render(object):
     # inicializa cualquier objeto dentro de la clase Render
-    def __init__(self, ancho, alto):
+    def __init__(self, ancho, alto, fondo):
         # ancho de la imagen
         self.ancho = ancho
         # alto de la imagen
@@ -37,12 +37,13 @@ class Render(object):
         # color predeterminado del punto en la pantalla
         self.punto_color = negro
         # color de fondo de la imagen
-        self.glClear()
+        self.glClear(fondo)
 
     # fondo de toda la imagen
-    def glClear(self):
-        # el color predeterminado es rosado
-        self.pixels = [[rosado for x in range(self.ancho)] for y in range(self.alto)]
+    def glClear(self, color_f):
+        # color de fondo
+        color_fondo = color_f
+        self.pixels = [[color_fondo for x in range(self.ancho)] for y in range(self.alto)]
 
     # crear un punto en cualquier lugar de la pantalla 
     def glVertex(self, x, y):
