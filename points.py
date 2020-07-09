@@ -17,6 +17,12 @@ def word(w):
 def dword(d):
     # solo 4 bytes
     return struct.pack('=l', d)
+
+def convertir(co):
+    # 1 ------ 255
+    # x ------ y
+    color_r = co * 255
+    return int(color_r)
     
 def color(r, g, b):
     return bytes([b, g, r])
