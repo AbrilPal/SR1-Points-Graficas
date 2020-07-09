@@ -5,11 +5,14 @@
 # importar mis funciones de points.py
 from points import Render, color
 
-imagen = Render(200,200, color(0,255,0))
+# 
+ancho = int(input("Ingrese el ancho deseado de la imagen: "))
+alto = int(input("Ingrese el alto deseado de la imagen: "))
+x = int(input("Ingrese la posición en 'x' del punto: "))
+y = int(input("Ingrese la posición en 'y' del punto: "))
 
+# crear la imagen
+imagen = Render(ancho, alto, color(0,255,0))
 imagen.glColor(color(0,0,255))
-
-imagen.glVertex(10,100)
-   
-
+imagen.glVertex(y,x)
 imagen.glFinish('punto.bmp')

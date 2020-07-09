@@ -55,30 +55,27 @@ class Render(object):
 
     # escribe el archivo
     def glFinish(self, name):
-        archivo = open(name, 'wb')
-
-        archivo.write(bytes('B'.encode('ascii')))
-        archivo.write(bytes('M'.encode('ascii')))
-
-        archivo.write(dword(14 + 40 + self.ancho * self.alto * 3))
-        archivo.write(dword(0))
-        archivo.write(dword(14 + 40))
-        archivo.write(dword(40))
-        archivo.write(dword(self.ancho))
-        archivo.write(dword(self.alto))
-        archivo.write(word(1))
-        archivo.write(word(24))
-        archivo.write(dword(0))
-        archivo.write(dword(self.ancho * self.alto * 3))
-        archivo.write(dword(0))
-        archivo.write(dword(0))
-        archivo.write(dword(0))
-        archivo.write(dword(0))
+        imagen = open(name, 'wb')
+        imagen.write(bytes('B'.encode('ascii')))
+        imagen.write(bytes('M'.encode('ascii')))
+        imagen.write(dword(14 + 40 + self.ancho * self.alto * 3))
+        imagen.write(dword(0))
+        imagen.write(dword(14 + 40))
+        imagen.write(dword(40))
+        imagen.write(dword(self.ancho))
+        imagen.write(dword(self.alto))
+        imagen.write(word(1))
+        imagen.write(word(24))
+        imagen.write(dword(0))
+        imagen.write(dword(self.ancho * self.alto * 3))
+        imagen.write(dword(0))
+        imagen.write(dword(0))
+        imagen.write(dword(0))
+        imagen.write(dword(0))
 
         for x in range(self.alto):
             for y in range(self.ancho):
-                archivo.write(self.pixels[x][y])
+                imagen.write(self.pixels[x][y])
 
-
-        archivo.close()
+        imagen.close()
 
