@@ -45,6 +45,12 @@ class Render(object):
         # color de fondo de la imagen
         self.glClear(fondo)
 
+    def glViewPort(self, x, y, ancho, alto):
+        self.viewport_x = x
+        self.viewport_y = y
+        self.viewport_ancho = ancho
+        self.viewport_alto = alto
+
     # fondo de toda la imagen
     def glClear(self, color_f):
         # color de fondo
@@ -53,7 +59,9 @@ class Render(object):
 
     # crear un punto en cualquier lugar de la pantalla 
     def glVertex(self, x, y):
-        self.pixels[x][y] = self.punto_color
+        xw = int((x + 1) * (self.viewport_ancho/2) + self.viewport_x)
+        yw = int((y + 1) * (self.viewport_alto/2) + self.viewport_y)
+        self.pixels[xw][yw] = self.punto_color
 
     # permite cambiar el color del punto
     def glColor(self, color_p):
@@ -84,4 +92,3 @@ class Render(object):
                 imagen.write(self.pixels[x][y])
 
         imagen.close()
-
